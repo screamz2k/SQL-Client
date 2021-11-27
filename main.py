@@ -77,19 +77,10 @@ def connect_to_server(host, db, user, pw, port):
                 time.sleep(3)
         elif choice == "2":
             ui()
-            table = input("Table: ")
-            column = input("Column (leave empty if if you want to fetch all columns): ")
-            if column == "":
-                column = "*"
-            condition = input("Condition (leave free if all rows should be fetched): ")
-            if "WHERE" in condition:
-                prrint("[red] Leave out WHERE and just type the condition")
-                condition = input("Condition (leave free if all rows should be fetched): ")
+            prrint("[yellow]Enter Query:")
+            query = input("- ")
             try:
-                if not condition:
-                    curr.execute(f"SELECT {column} FROM {table}")
-                else:
-                    curr.execute(f"SELECT {column} FROM {table} WHERE {condition}")
+                curr.execute(query)
             except Exception as e:
                 ui()
                 console.print(f"[red] An Error occured:\n{e}", justify="center")
@@ -146,19 +137,10 @@ def connect_to_local(path):
                 time.sleep(3)
         elif choice == "2":
             ui()
-            table = input("Table: ")
-            column = input("Column (leave empty if if you want to fetch all columns): ")
-            if column == "":
-                column = "*"
-            condition = input("Condition (leave free if all rows should be fetched): ")
-            if "WHERE" in condition:
-                prrint("[red] Leave out WHERE and just type the condition")
-                condition = input("Condition (leave free if all rows should be fetched): ")
+            prrint("[yellow]Enter Query:")
+            query = input("- ")
             try:
-                if not condition:
-                    curr.execute(f"SELECT {column} FROM {table}")
-                else:
-                    curr.execute(f"SELECT {column} FROM {table} WHERE {condition}")
+                curr.execute(query)
             except Exception as e:
                 ui()
                 console.print(f"[red] An Error occured:\n{e}", justify="center")
